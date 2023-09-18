@@ -45,7 +45,7 @@ articles_dict = [
 value = input("Enter value:  ")
 
 def find_articles(key, letter_case=False):
-    keys = [key for key in articles_dict if articles_dict[key] == value]
+    keys = [key.values() for key in articles_dict if articles_dict[key] == value]
     return keys
 print("Keys with target grade:", keys)
 
