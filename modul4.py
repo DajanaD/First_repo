@@ -25,3 +25,26 @@ def prepare_data(data):
     del value[0]
     del value[-1]
     return value
+# 4.3 Ми розробляємо кулінарний блог. І в рецептах, при написанні списку інгредієнтів, ми розділяємо їх комами,
+# а перед останнім ставимо союз "and", як у прикладі нижче:
+# 2 eggs, 1 liter sugar, 1 tsp salt and vinegar
+# Напишіть функцію format_ingredients, яка прийматиме на вхід список з інгредієнтів ["2 eggs", "1 liter sugar", "1 tsp salt", "vinegar"]
+# та повертатиме рядок зібраний з його елементів в описаний вище спосіб. Ваша функція має вміти обробляти списки будь-якої довжини.
+# -----------------------------------------------------------------------------------------------
+
+def format_ingredients(items):
+    if len(items) > 2:
+        first = items
+        list_items = first[-1] 
+        list_items1 = first[-2]
+        all_list_items = list_items1 + ' and ' + list_items
+        first.pop()
+        first.pop()
+        string_items = ', '.join(first) + ',' + ' ' + all_list_items
+        return str(string_items)
+    elif len(items) == 2:
+        return " and ".join(items)
+    else:
+        return ''.join(items)
+# 4.4 
+# -----------------------------------------------------------------------------------------------
