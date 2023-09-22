@@ -1,5 +1,3 @@
-
-
 # articles_dict = [
 #     {
 #         "title": "Endless ocean waters.",
@@ -29,9 +27,9 @@
 #     return keys
 # print("Keys with target grade:", keys)
 
-def get_grade(key):
-    
-    
+def lookup_key(data, value):
+    keys = [key for key, values in data.items() if values == value]
+    return keys
+        
+print(lookup_key({"Python": 1991, "Java": 1995, "JS": 1995}, 1993))
 
-
-def get_description(key):
