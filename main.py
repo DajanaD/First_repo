@@ -35,15 +35,3 @@
 # find_articles("The ocean that you love.", letter_case=False)
 
 
-def game(terra, power):
-    power1 = 0
-    all_power = power
-    for list_terra in terra:
-        for power_terra in list_terra:
-            while True:
-                if all_power <= power_terra:
-                    power1 += power_terra
-                    all_power = power + power1 
-                       
-    return all_power
-print(game([[1, 2, 5, 10], [2, 10, 2], [1, 3, 1]], 1))
