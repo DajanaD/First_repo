@@ -20,16 +20,30 @@
 #         "year": 2021,
 #     },
 # ]
-# value = input("Enter value:  ")
+# # value = input("Enter value:  ")
 
 # def find_articles(key, letter_case=False):
-#     keys = [key.values() for key in articles_dict if articles_dict[key] == value]
-#     return keys
-# print("Keys with target grade:", keys)
+#     articles = []
+#     for article in articles_dict:
+#         print(article)
+#         # # print(article[1])
+#         # if article[0] == key:
+#         #     articles = article
+#         #     print(articles)
+#         # else:
+#         #     None
+# find_articles("The ocean that you love.", letter_case=False)
 
-def lookup_key(data, value):
-    keys = [key for key, values in data.items() if values == value]
-    return keys
-        
-print(lookup_key({"Python": 1991, "Java": 1995, "JS": 1995}, 1993))
 
+def game(terra, power):
+    power1 = 0
+    all_power = power
+    for list_terra in terra:
+        for power_terra in list_terra:
+            while True:
+                if all_power <= power_terra:
+                    power1 += power_terra
+                    all_power = power + power1 
+                       
+    return all_power
+print(game([[1, 2, 5, 10], [2, 10, 2], [1, 3, 1]], 1))
