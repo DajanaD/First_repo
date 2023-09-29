@@ -35,3 +35,42 @@
 # find_articles("The ocean that you love.", letter_case=False)
 
 
+from random import randint
+
+def is_valid_password(password):
+    if len(password) != 8:
+        return False
+
+    has_upper = False
+    has_lower = False
+    has_num = False
+
+    for ch in password:
+        if ch.isupper():
+            has_upper = True
+        elif ch.islower():
+            has_lower = True
+        elif ch.isdigit():
+            has_num = True
+
+    return has_upper and has_lower and has_num
+def get_random_password():
+    result = ''
+    count = 0
+    while count < 8:
+        result += chr(randint(40, 126))
+        count += 1
+    return result
+
+def get_password():
+    valid_password = is_valid_password(get_random_password())
+    
+    if valid_password == True:
+        return get_random_password()
+    elif valid_password == False:
+        valid_password
+print(get_password())
+        
+
+
+

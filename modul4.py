@@ -212,3 +212,58 @@ def is_valid_pin_codes(pin_codes):
 # та повернути згенерований пароль у вигляді рядка.
 # -----------------------------------------------------------------------------------------------
 
+from random import randint
+
+
+def get_random_password():
+    result = ''
+    count = 0
+    while count < 8:
+        result += chr(randint(40, 126))
+        count += 1
+    return result
+
+#  4.11 Другий етап. Необхідно написати функцію is_valid_password, яка перевірятиме отриманий параметр — пароль на надійність.
+# Критерії надійного пароля:
+# Довжина рядка пароля вісім символів.
+# Містить хоча б одну літеру у верхньому регістрі.
+# Містить хоча б одну літеру у нижньому регістрі.
+# Містить хоча б одну цифру.
+# Функція is_valid_password повинна повернути True, якщо переданий параметр пароль відповідає вимогам на надійність.
+# Інакше повернути False.
+# -----------------------------------------------------------------------------------------------
+
+import re
+def is_valid_password(password):
+    if len(password)<8:
+            return False
+    patern_nijn=re.compile('[a-z]')
+    patern_verhn=re.compile('[A-Z]') 
+    patern_num=re.compile('[0-9]') 
+    countBukvVVerhnRegistre=0
+    countBukvVNijnemRegistre=0
+    countnumbers=0
+    for chunk_let in password:
+        if  patern_nijn.match(chunk_let):
+            countBukvVNijnemRegistre+=1
+        elif  patern_verhn.match(chunk_let):
+            countBukvVVerhnRegistre+=1
+        elif  patern_num.match(chunk_let):
+            countnumbers+=1
+    if countBukvVNijnemRegistre == 0:
+        return False
+    if countBukvVVerhnRegistre == 0 :
+        return False
+    if countnumbers == 0 :
+        return False
+    return True
+
+# 4.11 І, нарешті, третій, останній етап. Використовуючи рішення із попередніх двох завдань, напишіть функцію get_password,
+# яка згенерує нам випадковий надійний пароль та поверне його. Алгоритм простий — ми генеруємо пароль 
+# за допомогою функції get_random_password і, якщо він проходить перевірку на надійність функцією is_valid_password,
+# повертаємо його, якщо ні — повторюємо ітерацію знову.
+# Примітка: Хорошою практикою буде обмежити кількість спроб (наприклад, до 100), щоб не отримати нескінченний цикл.
+# -----------------------------------------------------------------------------------------------
+
+
+
