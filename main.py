@@ -1,76 +1,68 @@
-# articles_dict = [
-#     {
-#         "title": "Endless ocean waters.",
-#         "author": "Jhon Stark",
-#         "year": 2019,
-#     },
-#     {
-#         "title": "Oceans of other planets are full of silver",
-#         "author": "Artur Clark",
-#         "year": 2020,
-#     },
-#     {
-#         "title": "An ocean that cannot be crossed.",
-#         "author": "Silver Name",
-#         "year": 2021,
-#     },
-#     {
-#         "title": "The ocean that you love.",
-#         "author": "Golden Gun",
-#         "year": 2021,
-#     },
-# ]
-# # value = input("Enter value:  ")
-
-# def find_articles(key, letter_case=False):
-#     articles = []
-#     for article in articles_dict:
-#         print(article)
-#         # # print(article[1])
-#         # if article[0] == key:
-#         #     articles = article
-#         #     print(articles)
-#         # else:
-#         #     None
-# find_articles("The ocean that you love.", letter_case=False)
+articles_dict = [
+    {
+        "title": "Endless ocean waters.",
+        "author": "Jhon Stark",
+        "year": 2019,
+    },
+    {
+        "title": "Oceans of other planets are full of silver",
+        "author": "Artur Clark",
+        "year": 2020,
+    },
+    {
+        "title": "An ocean that cannot be crossed.",
+        "author": "Silver Name",
+        "year": 2021,
+    },
+    {
+        "title": "The ocean that you love.",
+        "author": "Golden Gun",
+        "year": 2021,
+    },
+]
 
 
-from random import randint
-
-def is_valid_password(password):
-    if len(password) != 8:
-        return False
-
-    has_upper = False
-    has_lower = False
-    has_num = False
-
-    for ch in password:
-        if ch.isupper():
-            has_upper = True
-        elif ch.islower():
-            has_lower = True
-        elif ch.isdigit():
-            has_num = True
-
-    return has_upper and has_lower and has_num
-def get_random_password():
-    result = ''
-    count = 0
-    while count < 8:
-        result += chr(randint(40, 126))
-        count += 1
-    return result
-
-def get_password():
-    valid_password = is_valid_password(get_random_password())
-    
-    if valid_password == True:
-        return get_random_password()
-    elif valid_password == False:
-        valid_password
-print(get_password())
+def find_articles(key, letter_case=False):
+    articles = []
+    if not letter_case:
         
+        for article in articles_dict:            
+            for keys, value in article.items():
+                if keys == "title" or keys == "author":
+                    if value.find(key) != -1:        
+                        articles.append(article)
+                        
+    else:
+           
+        for article in articles_dict:            
+            for keys, value in article.items():
+                if keys == "title" or keys == "author":
+                    if value.find(key.lower()) != -1 or value.find(key.capitalize()) != -1:        
+                        articles.append(article)
+                        
+    return articles
+print(find_articles("Ocean"))
 
+# def write_employees_to_file(employee_list, path):
+#     fh = open(path, 'w')
+#     string_list =''
+#     for el in employee_list:
+#         string = '\n '.join(el)
+#         string_list += string
+#     return string_list
+    
+# print( write_employees_to_file([['Robert Stivenson,28', 'Alex Denver,30'], ['Drake Mikelsson,19']], 'test.txt'))
 
-
+def find_articles(key, letter_case=False):
+    articles = []
+    if letter_case:
+        for article in articles_dict:
+            for keys, value in article.items():
+                if key in str(value):
+                        articles.append(article)
+    else:
+        for article in articles_dict:
+            for keys, value in article.items():
+                if key.lower() in str(value).lower():
+                        articles.append(article)
+    return articles 
