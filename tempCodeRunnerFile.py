@@ -1,7 +1,1 @@
-else:
-           
-    #     for article in articles_dict:            
-    #         for keys, value in article.items():
-    #             if keys == "title" or keys == "author":
-    #                 if value.find(key) != -1:        
-    #                     articles.append(article)
+print(replace_spam_words('Guido van Ross um began working on Python in the late 1980s, as a successor to the ABC programming PYTHOn language, and first released pYthoN it in 1991 as Python 0.9.0. pythOn ', ['began', 'Python']))
