@@ -1,1 +1,7 @@
-print(replace_spam_words('Guido van Ross um began working on Python in the late 1980s, as a successor to the ABC programming PYTHOn language, and first released pYthoN it in 1991 as Python 0.9.0. pythOn ', ['began', 'Python']))
+fh = open(path, 'w')
+    for el in employee_list:
+        string = '\n'.join(el)
+        fh.write(string + '\n')
+        print(string)
+    
+    fh.close()
