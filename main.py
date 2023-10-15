@@ -1,10 +1,6 @@
-def write_employees_to_file(employee_list, path):
-    fh = open(path, 'w')
-    sring_new = ''
-    for el in employee_list:
-        string = '\n'.join(el)
-        sring_new += string +'\n'
-    fh.write(sring_new + '\n')
-    fh.close()
-    
-print( write_employees_to_file([['Robert Stivenson,28', 'Alex Denver,30'], ['Drake Mikelsson,19']], 'test.txt'))
+def save_credentials_users(path, users_info):
+    with open(path, 'wb') as fh:
+        for key, value in users_info.items():
+            string = f'{key}:{value}\n'
+            fh.write(string.encode())
+save_credentials_users("test.txt", {'andry':'uyro18890D', 'steve':'oppjM13LL9e'})
