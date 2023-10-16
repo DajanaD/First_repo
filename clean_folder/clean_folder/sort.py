@@ -112,7 +112,6 @@ def handle_archive(file_name: Path, target_folder: Path):
 
 
 def main(folder: Path):
-    Path(folder)
     file_parser = scan(folder)
     for file in get_extension(JPEG_IMAGES):
         handle_media(file, folder / 'images' / 'JPEG')
