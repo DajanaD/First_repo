@@ -352,5 +352,27 @@ def encode_data_to_base64(data):
 # архів має бути у форматі zip з ім'ям 'backup_folder', створений за допомогою make_archive.
 # -----------------------------------------------------------------------------------------------
 
-# 6.14
+import shutil
+
+
+def create_backup(path, file_name, employee_residence):
+    with open(f'{path}/{file_name}', 'wb') as fh:
+        for key, volue in employee_residence.items():
+            employee = f"{key} {volue}\n"
+            print(employee)
+            fh.write(employee.encode())
+    return shutil.make_archive('backup_folder', 'zip',  path)
+
+# 6.14 Створіть функціонал для розпакування архіву.
+# Зробіть import пакету shutil
+# Створіть функцію unpack(archive_path, path_to_unpack), яка викликатиме метод пакета shutil unpack_archive
+# та розпаковуватиме архів archive_path у місце path_to_unpack.
+# Функція нічого не повертає.
 # -----------------------------------------------------------------------------------------------
+
+import shutil
+
+
+def unpack(archive_path, path_to_unpack):
+    shutil.unpack_archive(archive_path, path_to_unpack)
+    
