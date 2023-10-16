@@ -304,3 +304,53 @@ def save_credentials_users(path, users_info):
 # Використовуйте менеджер контексту для читання з файлу
 # -----------------------------------------------------------------------------------------------
 
+def get_credentials_users(path):
+    with open(path, 'rb') as fh:
+        credentials_users = fh.readlines()
+        line  = [line.decode().rstrip() for line in credentials_users]
+    return line
+
+# 6.12 Функція get_credentials_users із попереднього завдання повертає нам список рядків username:password:
+# ['andry:uyro18890D', 'steve:oppjM13LL9e']
+# Реалізуйте функцію encode_data_to_base64(data), яка приймає у параметрі data зазначений список,
+# виконує кодування кожної пари username:password у формат Base64 та повертає список із закодованими
+# парами username:password у вигляді:
+# ['YW5kcnk6dXlybzE4ODkwRA==', 'c3RldmU6b3Bwak0xM0xMOWU=']
+# -----------------------------------------------------------------------------------------------
+
+import base64
+
+
+def encode_data_to_base64(data):
+    data_to_base64_list = []
+    for data_to_base64 in data:
+        message_bytes = data_to_base64.encode("utf-8")
+        base64_bytes = base64.b64encode(message_bytes)
+        base64_message = base64_bytes.decode("utf-8")
+        data_to_base64_list.append(base64_message)
+    return data_to_base64_list
+
+# 6.13 Реалізуйте функцію create_backup(path, file_name, employee_residence)
+# Де:
+# path — шлях до файлу
+# file_name — ім'я файлу
+# employee_residence — словник, у якому ключ — ім'я користувача, а значення — країна проживання.
+# Вигляд: {'Michael': 'Canada', 'John':'USA', 'Liza': 'Australia'}
+# Функція повинна працювати так:
+# Створювати бінарний файл file_name за шляхом path
+# Зберігати дані словника employee_residence у файл, де кожен новий рядок 
+# — це ключ значення через пробіл як "Michael Canada"
+# Архівувати теку по шляху path за допомогою shutil
+# Ім'я архіву має бути backup_folder.zip
+# Функція має повернути рядок шляху до архіву backup_folder.zip
+# Вимоги:
+# запишіть вміст словника employee_residence у бінарний файл з ім'ям file_name у теку path за допомогою оператора with.
+# використовуйте символ /, щоб розділити шлях для path та file_name
+# вигляд рядка файлу — Michael Canada, в кінці кожного рядка додається перенесення рядка '\n'.
+# при збереженні кожен рядок файлу кодується методом encode
+# при записі рядків використовуємо лише метод write
+# архів має бути у форматі zip з ім'ям 'backup_folder', створений за допомогою make_archive.
+# -----------------------------------------------------------------------------------------------
+
+# 6.14
+# -----------------------------------------------------------------------------------------------
